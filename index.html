@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <script>
+        function getComputerChoice (){
+            const randomNumber = Math.floor(Math.random() * (2 - 0 + 1) ) + 0;
+            let choice;
+            switch(randomNumber){
+                case 0:
+                    choice = "ROCK";
+                    break;
+                case 1:
+                    choice = "PAPER";
+                    break;
+                case 2:
+                    choice = "SCISSORS";
+                    break;
+            }
+            return choice;
+        }
+        function singleRun(playerSelection,computerSelection){
+            if((playerSelection === "ROCK") && (computerSelection === "PAPER")){
+                return "You Lose! Paper swallows Rock";
+            } else if ((playerSelection === "PAPER") && (computerSelection === "SCISSORS")) {
+                return "You Lose! Scissors cuts Paper";
+            } else if ((playerSelection === "SCISSORS") && (computerSelection === "ROCK")) {
+                return "You Lose! Rock demolishes Scissors";
+            } else if ((playerSelection === "ROCK") && (computerSelection === "SCISSORS")){
+                return "You Win! Your Rock is Great";
+            } else if ((playerSelection === "PAPER") && (computerSelection === "ROCK")){
+                return "You Win! Your Paper swallows it";
+            } else if ((playerSelection === "SCISSORS") && (computerSelection === "PAPER")){
+                return "You Win! Your Scissors cuts the Paper";
+            } else{
+                return "The Game Ties";
+            }
+        }
+        
+
+        function game(){
+            let results = "";
+            for(let i = 0; i < 5; i++){
+                let choices = prompt("Rock, Paper, or Scissors?");
+                playerSelection = choices.toUpperCase();
+                let run = singleRun(playerSelection,getComputerChoice());
+                results = results + run + "\n";
+            }
+            return results;
+        }   
+        console.log(game());
+    </script>
+</body>
+</html>
